@@ -1,4 +1,45 @@
+
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="projectname">Project Name</label>
+            <input
+              type="text"
+              id="projectname"
+              formControlName="projectname"
+              class="form-control">
+              <span *ngIf="!newForm.get('projectname').valid  && newForm.get('projectname').touched" class="help-block">
+                Project name is required
+              </span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+              <span
+                *ngIf="!newForm.get('email').valid  && newForm.get('email').touched"
+                class="help-block">
+                Please enter a valid email!
+              </span>
+          </div>
+          <div class="form-group">
+            <select id="projectstatus" formControlName="projcetstatus">
+              <option selected>Stable</option>
+              <option>Critical</option>
+              <option>Finished</option>
+            </select>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
@@ -10,10 +51,9 @@
               id="username"
               formControlName="username"
               class="form-control">
-              <span
-                *ngIf="!signupForm.get('userData.username').valid  && signupForm.get('userData.username').touched"
-                class="help-block">
-                Please enter a valid username!
+              <span *ngIf="!signupForm.get('userData.username').valid  && signupForm.get('userData.username').touched" class="help-block">
+                <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is invalid!</span>
+                <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required!</span>
               </span>
           </div>
           <div class="form-group">
@@ -51,4 +91,5 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
+
